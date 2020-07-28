@@ -8,9 +8,10 @@ include_directories(include)
 # 并将名称保存到 DIR_SRCS 变量
 aux_source_directory(. DIR_SRCS)
 
-# 添加 math 子目录
+# 添加 lib 子目录
 add_subdirectory(lib)
-
+# 添加解析器
+add_subdirectory(sqltools)
 # 指定生成目标
 add_executable(oct test/test1.c include/autumn_linked_list.h)
 
