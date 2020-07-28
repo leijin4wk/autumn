@@ -15,19 +15,6 @@ record : NAME EQ AGE {
 ;
 %%
 
-int main()
-{
-    extern FILE* yyin;
-    if (!(yyin = fopen("test.txt", "r")))
-    {
-        perror("cannot open parsefile:");
-        return -1;
-    }
-
-    yyparse();
-    fclose(yyin);
-    return 0;
-}
 int yyerror(char *msg)
 {
     printf("Error encountered: %s \n", msg);

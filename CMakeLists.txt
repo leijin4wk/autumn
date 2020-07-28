@@ -8,18 +8,15 @@ include_directories(include)
 # 并将名称保存到 DIR_SRCS 变量
 aux_source_directory(. DIR_SRCS)
 
-# 添加 lib 子目录
-add_subdirectory(lib)
 # 添加解析器
-add_subdirectory(sqltools)
+add_subdirectory(maple)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/maple)
 # 指定生成目标
-add_executable(oct test/test1.c include/autumn_linked_list.h)
+add_executable(oct test/test2.c)
 
-# 添加链接库
-target_link_libraries(oct autumn)
+## 添加链接库
+target_link_libraries(oct maple)
+#dl 动态链接库
+target_link_libraries(oct dl)
 
-# 启用测试
-enable_testing()
-
-# 测试程序是否成功运行
-add_test (test1 oct)

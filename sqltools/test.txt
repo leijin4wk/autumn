@@ -1,3 +1,0 @@
-ZhangSan=23
-     LiSi=34
-     WangWu=43
