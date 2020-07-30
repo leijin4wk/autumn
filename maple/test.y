@@ -17,5 +17,5 @@ statement: NAME EQ AGE {
 
 int yyerror(char *msg)
 {
-      printf("Error: %s encountered\n", msg);
+      printf("Error: %s\n", msg);
 }
