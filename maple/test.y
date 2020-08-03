@@ -1,21 +1,35 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
-typedef char* string;
-#define YYSTYPE string
-%}
-%token NAME EQ AGE
+#include <string.h>
 
-%%
-statements: statements statement
-           | statement
-           ;
-statement: NAME EQ AGE {
-                     printf("%s is %s years old!!!\n", $1, $3);
-           };
-%%
+extern int yyparse ();
 
-int yyerror(char *msg)
+extern int yylex ();
+
+void yyerror(const char *str)
 {
-      printf("Error: %s\n", msg);
+  fprintf(stderr,"error: %s\n",str);
 }
+int yywrap()
+{
+  return 1;
+}
+%}
+%union{
+	int intval;
+  	char *strval;
+}
+
+%token NAME EQ AGE
+%token <intval> AGE
+%token <strval> NAME
+%%
+records: records  record | record ;
+
+record:NAME EQ AGE
+        {
+           printf("%s \n", $1);
+           printf("%d \n", $3);
+     	   printf("%s is %d years old!!!\n", $1, $3);
+     	};
+%%
