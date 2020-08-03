@@ -15,10 +15,10 @@ static void autumn_print_help ();
 
 
 static struct option long_options[] = {
-        {"version", no_argument, 0, 'v'},
-        {"file", required_argument, 0, 'f'},
-        {"run", required_argument, 0, 'r'},
-        {"help", no_argument, 0, 'h'},
+        {"version", no_argument, NULL, 'v'},
+        {"file", required_argument, NULL, 'f'},
+        {"run", required_argument, NULL, 'r'},
+        {"help", no_argument, NULL, 'h'},
         {NULL, no_argument, NULL, 0},
 };
 int main(int argc, char **argv) {
@@ -26,16 +26,6 @@ int main(int argc, char **argv) {
     int option_index = 0;
     while ((c = getopt_long(argc, argv, "vrf:h", long_options, &option_index)) != -1) {
         switch (c) {
-            case 0:
-                printf("option %s", long_options[option_index].name);
-
-                if (optarg) {
-                    printf(" with arg %s", optarg);
-                }
-
-                putchar('\n');
-                break;
-
             case 'v':
                 // version
                 autumn_print_version();
@@ -80,7 +70,8 @@ void autumn_print_version () {
 
 void autumn_print_help () {
     puts("Usage:");
-    puts("-v, --version\n\tsee version number");
-    puts("-f, --file [filename]:\n\tinterpret [filename]. Argument not optional.");
-    puts("-h, --help:\n\tget this message");
+    puts("-v, --version\n\t see version number");
+    puts("-r, --run\n\t run ");
+    puts("-f, --file [filename]:\n\t interpret [filename]. Argument not optional.");
+    puts("-h, --help:\n\t get this message");
 }
