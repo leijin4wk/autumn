@@ -1,5 +1,4 @@
-# bison and flex
-## 枫树也是秋天的主题所以去枫树命名
+## 枫树是秋天的主题之一
 message(STATUS "build maple start!")
 #条件编译
 option (DEBUG  "DEBUG" ON)

@@ -1,4 +1,4 @@
-## 银杏也是秋天的主题所以去银杏命名
+## 杨树也是秋天的主题之一
 message(STATUS "build poplar start!")
 
 add_library(poplar  poplar.c)
