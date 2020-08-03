@@ -30,14 +30,13 @@ int main(int argc, char **argv) {
                 autumn_print_version();
                 break;
             case 'r':
-                printf("run:\n");
+                printf("autumn is running...\n");
                 int flag=1;
                 while (flag) {
                     char str[50];
                     char *string = str;
                     printf("SQL->");
                     gets(string);
-                    printf("%s\n", string);
                     flag=autumn_process_command(string);
                 }
                 break;
@@ -61,8 +60,6 @@ int autumn_process_command(char * command){
         return 0;
     }
     m_parser(command);
-    g_hello();
-    p_hello();
     return 1;
 }
 
