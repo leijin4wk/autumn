@@ -3,4 +3,4 @@ message(STATUS "build ginkgo start!")
 
 add_library(ginkgo  ginkgo.c)
 
-message(STATUS "build maple end!")
+message(STATUS "build ginkgo end!")

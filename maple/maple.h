@@ -5,5 +5,5 @@
 #ifndef AUTUMN_MAPLE_H
 #define AUTUMN_MAPLE_H
 
-void  parser(const char * text);
+void  m_parser(const char * text);
 #endif //AUTUMN_MAPLE_H

@@ -6,5 +6,5 @@
 #define AUTUMN_GINKGO_H
 
 
-void hello();
+void g_hello();
 #endif //AUTUMN_GINKGO_H
