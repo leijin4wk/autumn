@@ -11,10 +11,10 @@
 
 #define AUTUMN_VERSION 1.0
 
-static void autumn_print_version ();
-static void autumn_print_help ();
-static int autumn_process_command();
-static struct option long_options[] = {
+void autumn_print_version ();
+void autumn_print_help ();
+int autumn_process_command(char *);
+struct option long_options[] = {
         {"version", no_argument, NULL, 'v'},
         {"run", required_argument, NULL, 'r'},
         {"help", no_argument, NULL, 'h'},

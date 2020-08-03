@@ -8,7 +8,7 @@ extern int yylex ();
 
 void yyerror(const char *str)
 {
-  fprintf(stderr,"error: %s\n",str);
+  fprintf(stderr,"\nerror: %s\n",str);
 }
 int yywrap()
 {
