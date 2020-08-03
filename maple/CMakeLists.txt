@@ -1,5 +1,6 @@
 # bison and flex
-
+## 枫树也是秋天的主题所以去枫树命名
+message(STATUS "build maple start!")
 #条件编译
 option (DEBUG  "DEBUG" ON)
 if (DEBUG)
@@ -20,9 +21,11 @@ BISON_TARGET(PARSER ./test.y ${CMAKE_CURRENT_BINARY_DIR}/yacc.c
         )
 message(STATUS ${BISON_PARSER_OUTPUTS})
 
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(maple ${BISON_PARSER_OUTPUTS}
         ${FLEX_LEXER_OUTPUTS}
-        )
+        maple.c maple.h)
 
+message(STATUS "build maple end!")

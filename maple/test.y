@@ -28,8 +28,7 @@ records: records  record | record ;
 
 record:NAME EQ AGE
         {
-           printf("%s \n", $1);
-           printf("%d \n", $3);
+         //注意数据类型
      	   printf("%s is %d years old!!!\n", $1, $3);
      	};
 %%

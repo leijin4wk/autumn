@@ -8,16 +8,22 @@ aux_source_directory(. DIR_SRCS)
 
 # 添加解析器
 add_subdirectory(maple)
+# 添加执行器
+add_subdirectory(ginkgo)
 
-#添加头文件目录 (因为lex yacc 会生成头文件)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/maple)
+#添加头文件目录
+include_directories(maple)
+
+include_directories(ginkgo)
 
 # 指定生成目标
-add_executable(autumn src/autumn.c)
+add_executable(autumn src/autumn.c )
 
 ## 添加链接库
-target_link_libraries(autumn maple)
+target_link_libraries(autumn maple ginkgo)
 
 #dl 动态链接库
 target_link_libraries(autumn dl)
+
+
 
