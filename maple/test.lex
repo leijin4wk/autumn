@@ -3,7 +3,6 @@
   #include <stdarg.h>
   #include <string.h>
   #include "yacc.h"
-  #define YYSTYPE char *
 %}
 
 %%
