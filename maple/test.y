@@ -20,7 +20,7 @@ int yywrap()
   	char *strval;
 }
 
-%token NAME EQ AGE
+%token EQ
 %token <intval> AGE
 %token <strval> NAME
 %%
