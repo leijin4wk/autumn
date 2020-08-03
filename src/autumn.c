@@ -15,15 +15,16 @@ static void autumn_print_help ();
 
 
 static struct option long_options[] = {
-        {"version", 0, 0, 'v'},
-        {"file", 1, 0, 'f'},
-        {"help", 0, 0, 'h'},
-        {NULL, 0, NULL, 0},
+        {"version", no_argument, 0, 'v'},
+        {"file", required_argument, 0, 'f'},
+        {"run", required_argument, 0, 'r'},
+        {"help", no_argument, 0, 'h'},
+        {NULL, no_argument, NULL, 0},
 };
 int main(int argc, char **argv) {
     int c;
     int option_index = 0;
-    while ((c = getopt_long(argc, argv, "vlwcf:h", long_options, &option_index)) != -1) {
+    while ((c = getopt_long(argc, argv, "vrf:h", long_options, &option_index)) != -1) {
         switch (c) {
             case 0:
                 printf("option %s", long_options[option_index].name);
@@ -47,7 +48,9 @@ int main(int argc, char **argv) {
                 g_hello();
                 p_hello();
                 break;
-
+            case 'r':
+                printf("%run\n");
+                break;
             case 'h':
                 // help
                 autumn_print_help();
