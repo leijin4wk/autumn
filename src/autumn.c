@@ -50,6 +50,14 @@ int main(int argc, char **argv) {
                 break;
             case 'r':
                 printf("%run\n");
+                int flag=1;
+                while (flag) {
+                    char str[50];
+                    char *string = str;  //一定要先将指针变量初始化
+                    printf("请输入字符串：");
+                    gets(string);  //也可以写成gets(str);
+                    printf("%s\n", string);  //输出参数是已经定义好的“指针变量名”
+                }
                 break;
             case 'h':
                 // help
