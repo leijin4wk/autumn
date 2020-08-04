@@ -20,6 +20,7 @@ struct option long_options[] = {
         {"help", no_argument, NULL, 'h'},
         {NULL, no_argument, NULL, 0},
 };
+extern char* temp;
 int main(int argc, char **argv) {
     int c;
     int option_index = 0;
@@ -60,6 +61,7 @@ int autumn_process_command(char * command){
         return 0;
     }
     m_parser(command);
+    printf("temp:%s\n",temp);
     return 1;
 }
 

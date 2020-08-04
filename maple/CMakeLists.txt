@@ -23,6 +23,8 @@ message(STATUS ${BISON_PARSER_OUTPUTS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
 add_library(maple ${BISON_PARSER_OUTPUTS}
         ${FLEX_LEXER_OUTPUTS}
         maple.c maple.h)
