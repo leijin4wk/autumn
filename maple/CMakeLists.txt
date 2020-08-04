@@ -20,13 +20,14 @@ BISON_TARGET(PARSER ./test.y ${CMAKE_CURRENT_BINARY_DIR}/yacc.c
         )
 message(STATUS ${BISON_PARSER_OUTPUTS})
 
-
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+#添加共有头文件
+include_directories(../${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_library(maple ${BISON_PARSER_OUTPUTS}
         ${FLEX_LEXER_OUTPUTS}
-        maple.c maple.h)
+        maple.c ../include/maple.h)
 
 message(STATUS "build maple end!")

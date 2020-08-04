@@ -7,7 +7,6 @@
 #include <string.h>
 #include "maple.h"
 #include "ginkgo.h"
-#include "poplar.h"
 
 #define AUTUMN_VERSION 1.0
 
@@ -20,7 +19,6 @@ struct option long_options[] = {
         {"help", no_argument, NULL, 'h'},
         {NULL, no_argument, NULL, 0},
 };
-extern char* temp;
 int main(int argc, char **argv) {
     int c;
     int option_index = 0;
