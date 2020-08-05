@@ -19,34 +19,15 @@ int yywrap()
   	struct statement *statement_list;
 }
 
-%token EQ
+%token CREATE  TABLE INTEGER VARCHAR CHAR REAL TEXT TIME NOT NULL
 %token <intval> AGE
 %token <strval> NAME
 %type <statement_list> statements statement
 %%
 statements: statements statement
 
-statement: createsql | selectsql | insertsql | deletesql | updatesql
+statement: createsql  | insertsql | selectsql
 
 createsql:
-	{
-		printf("22\n");
-		$$ = $1;
-		$$->next = $2;
-	}
-	| statement
-	{
-		printf("11\n");
-  	    	$$  = $1;
-	}
 
-statement:NAME EQ AGE
-        {
-        	printf("33\n");
-		printf("%s is %d \n", $1, $3);
-		$$ = (struct statement *)malloc(sizeof(struct statement));
-		$$->name = $1;
-		$$->age = $3;
-		$$->next = NULL;
-     	};
 %%

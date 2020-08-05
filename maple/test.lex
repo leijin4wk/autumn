@@ -22,24 +22,20 @@ TEXT | text { return TEXT; }
 
 TIME | time  { return TIME; }
 
+NOT | not   { return NOT; }
+
 NULL | null   { return NULL; }
 
 [\'][A-Za-z][A-Za-z0-9_]*[\'] 		{ yylval.strval=strdup(yytext); return STRING; }
 
-[A-Za-z][A-Za-z0-9_]*	 { yylval.strval=strdup(yytext); return ID; }
+[A-Za-z][A-Za-z0-9_]*	 { yylval.strval=strdup(yytext); return IDENTIFIER; }
+
 [0-9]+ 		 { yylval.intval=atoi(yytext); return NUMBER;	}
 
-[;]		|
-[(]		|
-[)]		|
-[*]		|
-[,]		|
-"<="	|
-">="	|
-[!]		|
-"<"		|
-">"		|
-[=]						return *yytext;
+[;]		 return *yytext;
+
+[(] | [)]   return *yytext;
 
 \n						return *yytext;
+
 %%
