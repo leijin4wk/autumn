@@ -16,18 +16,61 @@ int yywrap()
 %union{
 	int intval;
   	char *strval;
-  	struct statement *statement_list;
+  	struct field_items_define *field_items;
 }
 
-%token CREATE  TABLE INTEGER VARCHAR CHAR REAL TEXT TIME NOT NULL
-%token <intval> AGE
-%token <strval> NAME
-%type <statement_list> statements statement
+%token CREATE TABLE PRIMARY KEY INTEGER VARCHAR REAL DATE
+%token <intval> NUMBER
+%token <strval> ID STRING
+%type <field_items> field_items define_item
 %%
-statements: statements statement
+statements: statements statement | statement
 
-statement: createsql  | insertsql | selectsql
+statement: createsql
 
-createsql:
-
+createsql:  CREATE TABLE ID '(' field_items ',' PRIMARY KEY  '(' ID ')' ')' ';'{
+			printf("createTable\n");
+			createTable($3, $5, $10);
+           	}
+field_items: 	define_item {
+			printf("11\n");
+			$$ = $1;
+		}
+		| field_items ',' define_item {
+			printf("22\n");
+			$$ = $3;
+			$$->next = $1;
+		}
+define_item:	ID INTEGER  {
+		    printf("33\n");
+		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
+                    $$->field = $1;
+                    $$->type = 0;
+                    $$->size = 4;
+                    $$->next = NULL;
+		}
+		| ID VARCHAR '(' NUMBER ')'{
+		   printf("44\n");
+		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
+                    $$->field = $1;
+                    $$->type = 1;
+                    $$->size = 4;
+                    $$->next = NULL;
+		}
+		| ID REAL {
+			   printf("55\n");
+		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
+		    $$->field = $1;
+		    $$->type = 2;
+		    $$->size = 4;
+		    $$->next = NULL;
+                }
+                | ID DATE {
+                    printf("66\n");
+		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
+		    $$->field = $1;
+		    $$->type = 3;
+		    $$->size = 4;
+		    $$->next = NULL;
+                }
 %%

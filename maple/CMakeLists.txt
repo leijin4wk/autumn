@@ -11,7 +11,7 @@ find_package(BISON)
 
 find_package(FLEX)
 ## lex 生成文件命名并保存
-FLEX_TARGET(LEXER test.lex ${CMAKE_CURRENT_BINARY_DIR}/lexer.c)
+FLEX_TARGET(LEXER test.l ${CMAKE_CURRENT_BINARY_DIR}/lexer.c)
 ## yacc 生成文件命名并保存
 BISON_TARGET(PARSER ./test.y ${CMAKE_CURRENT_BINARY_DIR}/yacc.c
         DEFINES_FILE  ${CMAKE_CURRENT_BINARY_DIR}/yacc.h

@@ -12,10 +12,18 @@ struct statement*  m_parser(const char * text){
     YY_BUFFER_STATE buffer = yy_scan_string(text);
     yyparse();
     yy_delete_buffer(buffer);
-    struct statement *aa=yylval.statement_list;
-    while (aa->next!=NULL){
-      printf("%s is %d",aa->name,aa->age) ;
-      aa=aa->next;
-    }
     return NULL;
+}
+
+void createTable(char *table_name,struct field_items_define *items,char *key_name){
+    printf("table_name: %s \n",table_name);
+    while (items!=NULL){
+        printf("field_name: %s \n",items->field);
+        printf("field_type: %d \n",items->type);
+        printf("field_size: %d \n",items->size);
+        items=items->next;
+    }
+
+
+    printf("key_name:%s \n",key_name);
 }

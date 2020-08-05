@@ -1,0 +1,6 @@
+
+CREATE TABLE COURSE(id INTEGER, name VARCHAR(20) , salary REAL ,create_time DATE PRIMARY KEY (id));
+
+CREATE TABLE IDENTIFIER '(' field_items ',' PRIMARY KEY  '(' IDENTIFIER ')' ')' ';' '\n'
+
+
