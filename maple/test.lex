@@ -6,9 +6,40 @@
 %}
 
 %%
-[A-Za-z]+        {yylval.strval=strdup(yytext); return NAME;}
-[=]              {return EQ; }
-[0-9]+           {yylval.intval=atoi(yytext); return AGE;}
-[ \t]+                  /* ignore whitespace */;
+CREATE | create  { return CREATE; }
 
+TABLE |table { return TABLE; }
+
+INTEGER | integer { return INTEGER; }
+
+VARCHAR | varchar  { return VARCHAR; }
+
+CHAR  | char  { return CHAR; }
+
+REAL | real { return REAL; }
+
+TEXT | text { return TEXT; }
+
+TIME | time  { return TIME; }
+
+NULL | null   { return NULL; }
+
+[\'][A-Za-z][A-Za-z0-9_]*[\'] 		{ yylval.strval=strdup(yytext); return STRING; }
+
+[A-Za-z][A-Za-z0-9_]*	 { yylval.strval=strdup(yytext); return ID; }
+[0-9]+ 		 { yylval.intval=atoi(yytext); return NUMBER;	}
+
+[;]		|
+[(]		|
+[)]		|
+[*]		|
+[,]		|
+"<="	|
+">="	|
+[!]		|
+"<"		|
+">"		|
+[=]						return *yytext;
+
+\n						return *yytext;
 %%

@@ -13,5 +13,9 @@ struct statement*  m_parser(const char * text){
     yyparse();
     yy_delete_buffer(buffer);
     struct statement *aa=yylval.statement_list;
+    while (aa->next!=NULL){
+      printf("%s is %d",aa->name,aa->age) ;
+      aa=aa->next;
+    }
     return NULL;
 }

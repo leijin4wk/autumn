@@ -25,17 +25,24 @@ int yywrap()
 %type <statement_list> statements statement
 %%
 statements: statements statement
+
+statement: createsql | selectsql | insertsql | deletesql | updatesql
+
+createsql:
 	{
-		$$ = $2;
-		$$->next = $1;
+		printf("22\n");
+		$$ = $1;
+		$$->next = $2;
 	}
 	| statement
 	{
-  	    	$$ = $1;
+		printf("11\n");
+  	    	$$  = $1;
 	}
 
 statement:NAME EQ AGE
         {
+        	printf("33\n");
 		printf("%s is %d \n", $1, $3);
 		$$ = (struct statement *)malloc(sizeof(struct statement));
 		$$->name = $1;
