@@ -10,24 +10,20 @@ endif()
 find_package(BISON)
 
 find_package(FLEX)
-
+## lex 生成文件命名并保存
 FLEX_TARGET(LEXER test.lex ${CMAKE_CURRENT_BINARY_DIR}/lexer.c)
-
-message(STATUS ${FLEX_LEXER_OUTPUTS})
-
+## yacc 生成文件命名并保存
 BISON_TARGET(PARSER ./test.y ${CMAKE_CURRENT_BINARY_DIR}/yacc.c
         DEFINES_FILE  ${CMAKE_CURRENT_BINARY_DIR}/yacc.h
         )
-message(STATUS ${BISON_PARSER_OUTPUTS})
-
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
+##包含父项目的头文件，使用全局变量传递解析结果
+include_directories(../include)
 #添加共有头文件
-include_directories(../${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
 add_library(maple ${BISON_PARSER_OUTPUTS}
         ${FLEX_LEXER_OUTPUTS}
-        maple.c ../include/maple.h)
+        maple.c)
 
 message(STATUS "build maple end!")

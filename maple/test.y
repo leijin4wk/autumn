@@ -16,18 +16,30 @@ int yywrap()
 %union{
 	int intval;
   	char *strval;
+  	struct statement *statement_list;
 }
 
 %token EQ
 %token <intval> AGE
 %token <strval> NAME
+%type <statement_list> statements statement
 %%
-records: records  record | record ;
+statements: statements statement
+	{
+		$$ = $2;
+		$$->next = $1;
+	}
+	| statement
+	{
+  	    	$$ = $1;
+	}
 
-record:NAME EQ AGE
+statement:NAME EQ AGE
         {
-          temp=$1;
-         //注意数据类型
-     	   printf("%s is %d \n", $1, $3);
+		printf("%s is %d \n", $1, $3);
+		$$ = (struct statement *)malloc(sizeof(struct statement));
+		$$->name = $1;
+		$$->age = $3;
+		$$->next = NULL;
      	};
 %%

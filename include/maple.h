@@ -5,8 +5,14 @@
 #ifndef AUTUMN_MAPLE_H
 #define AUTUMN_MAPLE_H
 
-char * temp;
+#include <stdlib.h>
 
-void  m_parser(const char * text);
+struct statement {
+    char* name;
+    int age;
+    struct statement *next;
+};
+
+struct statement*  m_parser(const char * text);
 
 #endif //AUTUMN_MAPLE_H

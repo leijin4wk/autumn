@@ -59,7 +59,6 @@ int autumn_process_command(char * command){
         return 0;
     }
     m_parser(command);
-    printf("temp:%s\n",temp);
     return 1;
 }
 
