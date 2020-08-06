@@ -60,6 +60,7 @@ int autumn_process_command(char * command){
     }
     command="create table  student(id INTEGER, name VARCHAR(20) , salary REAL ,create_time DATE ,PRIMARY KEY (id));";
     m_parser(command);
+    g_hello();
     return 1;
 }
 
