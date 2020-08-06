@@ -15,7 +15,7 @@ struct field_items_define		/*CREATE语句后的字段和类型链表节点结构
     struct  field_items_define *next;
 };
 
-void createTable(char *table_name,struct field_items_define *items,char *keyName);
+void create_table(char *table_name,struct field_items_define *items,char *keyName);
 
 struct statement*  m_parser(const char * text);
 
