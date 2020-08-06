@@ -26,7 +26,7 @@ int yywrap()
 %%
 statements: statements statement | statement
 
-statement: createsql
+statement: createsql | insertsql
 
 createsql:  CREATE TABLE ID '(' field_items ',' PRIMARY KEY  '(' ID ')' ')' ';'{
 			printf("createTable\n");
@@ -73,4 +73,48 @@ define_item:	ID INTEGER  {
 		    $$->size = 4;
 		    $$->next = NULL;
                 }
+insertsql:	INSERT INTO ID VALUES '(' value_list ')' ';'{
+			printf("\n");
+			multiInsert($3, NULL, $6);
+			printf("\nSQL>");
+		}
+
+		|INSERT INTO ID '(' column_list ')' VALUES '(' value_list ')' ';'{
+			printf("\n");
+			multiInsert($3, $5, $9);
+			printf("\nSQL>");
+		}
+column_list: 	column {
+			$$ = $1;
+		}
+		| column_list ',' column{
+			$$ = $3;
+			$$->next = $1;
+		}
+column: 	ID {
+			$$ = (struct item_def *)malloc(sizeof(struct item_def));
+			$$->field = $1;
+			$$->pos = NULL;
+			$$->next = NULL;
+		}
+value_list:	value {
+			$$ = $1;
+		}
+		| value_list ',' value {
+			$$ = $3;
+			$$->next = $1;
+		}
+value:		NUMBER {
+			$$ = ((struct value_def *)malloc(sizeof(struct value_def)));
+			$$->value.intkey = $1;
+			$$->type = 0;
+			$$->next = NULL;
+		}
+		| STRING {
+			$$ = ((struct value_def *)malloc(sizeof(struct value_def)));
+			strcpy($$->value.skey, $1);
+			$$->type = 1;
+			$$->next = NULL;
+		}
+
 %%
