@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "g_os.h"
-#include "ginkgo.h"
+#include "g_page.h"
 
 void g_hello(){
-    char buf[PAGE_SIZE];
-    memset(buf,0,PAGE_SIZE);
+    char buf[1024];
+    memset(buf,0,1024);
     struct g_page *page= malloc(sizeof(struct g_page));
     page->type=1;
     page->page_num=0;

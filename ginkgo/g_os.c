@@ -6,7 +6,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "ginkgo.h"
 
 
 int open_file(char * name){
@@ -22,12 +21,9 @@ int open_file(char * name){
 int close_file(int fb){
     close(fb);
 }
-void read_page(int fd,int page_num,void *buf){
-    if (page_num !=0) {
-        off_t offset = lseek(fd, page_num * PAGE_SIZE, SEEK_SET);
-        printf("off = %d\n", offset);
-    }
-    int rd_ret = read(fd, buf, PAGE_SIZE);
+void read_page(int fd,off_t num,void *buf,size_t size){
+    lseek(fd, num, SEEK_SET);
+    int rd_ret = read(fd, buf, size);
     if(rd_ret == -1)
     {
         perror("read file error:");
@@ -36,12 +32,9 @@ void read_page(int fd,int page_num,void *buf){
     printf("rd_ret = %d\n",rd_ret);
 }
 
-void write_page(int fd,int page_num,void *buf){
-    if (page_num !=0) {
-        off_t offset = lseek(fd, page_num * PAGE_SIZE, SEEK_SET);
-        printf("off = %d\n", offset);
-    }
-    int wr_ret = write(fd, buf, PAGE_SIZE);
+void write_page(int fd,off_t num,void *buf,size_t size){
+    lseek(fd, num, SEEK_SET);
+    int wr_ret = write(fd, buf, size);
     if(wr_ret == -1)
     {
         perror("write file error:");
