@@ -58,7 +58,7 @@ int autumn_process_command(char * command){
         printf("goodbye!\n");
         return 0;
     }
-    command="create table  student(id INTEGER, name VARCHAR(20) , salary REAL ,create_time DATE ,PRIMARY KEY (id));";
+    command="create table  student(id INTEGER, name TEXT , salary REAL ,create_time DATE ,PRIMARY KEY (id));";
     m_parser(command);
     g_hello();
     return 1;

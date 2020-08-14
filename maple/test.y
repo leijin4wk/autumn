@@ -19,7 +19,7 @@ int yywrap()
   	struct field_items_define *field_items;
 }
 
-%token CREATE TABLE PRIMARY KEY INTEGER VARCHAR REAL DATE
+%token CREATE TABLE PRIMARY KEY INTEGER TEXT REAL DATE
 %token <intval> NUMBER
 %token <strval> ID STRING
 %type <field_items> field_items define_item
@@ -46,15 +46,13 @@ define_item:	ID INTEGER  {
 		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
                     $$->field = $1;
                     $$->type = 0;
-                    $$->size = 4;
                     $$->next = NULL;
 		}
-		| ID VARCHAR '(' NUMBER ')'{
+		| ID TEXT {
 		   printf("44\n");
 		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
                     $$->field = $1;
                     $$->type = 1;
-                    $$->size = 4;
                     $$->next = NULL;
 		}
 		| ID REAL {
@@ -62,7 +60,6 @@ define_item:	ID INTEGER  {
 		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
 		    $$->field = $1;
 		    $$->type = 2;
-		    $$->size = 4;
 		    $$->next = NULL;
                 }
                 | ID DATE {
@@ -70,7 +67,6 @@ define_item:	ID INTEGER  {
 		    $$ = (struct field_items_define *)malloc(sizeof(struct field_items_define));
 		    $$->field = $1;
 		    $$->type = 3;
-		    $$->size = 4;
 		    $$->next = NULL;
                 }
 %%

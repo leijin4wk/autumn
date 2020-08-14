@@ -16,8 +16,8 @@ KEY |
 key  {  return KEY; }
 INTEGER |
 integer {   return INTEGER; }
-VARCHAR |
-varchar  {  return VARCHAR; }
+TEXT |
+text  {  return TEXT; }
 REAL |
 real {  return REAL; }
 DATE |

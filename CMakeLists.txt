@@ -15,7 +15,7 @@ add_subdirectory(ginkgo)
 include_directories(include)
 
 # 指定生成目标
-add_executable(autumn src/autumn.c)
+add_executable(autumn src/autumn.c ginkgo/g_page.h)
 
 ## 添加链接库
 target_link_libraries(autumn maple ginkgo)

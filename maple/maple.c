@@ -22,10 +22,7 @@ void create_table(char *table_name,struct field_items_define *items,char *key_na
     while (items!=NULL){
         printf("field_name: %s \n",items->field);
         printf("field_type: %d \n",items->type);
-        printf("field_size: %d \n",items->size);
         items=items->next;
     }
-
-
     printf("key_name:%s \n",key_name);
 }

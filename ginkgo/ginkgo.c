@@ -4,22 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "g_os.h"
 #include "ginkgo.h"
 
 void g_hello(){
     char buf[PAGE_SIZE];
-    memset(buf,0,PAGE_SIZE);
-    struct g_page *page= malloc(sizeof(struct g_page));
-    page->type=1;
-    page->page_num=0;
-    page->block=0;
-    page->cells=0;
-    page->next=-1;
-    printf("%ld \n",sizeof(struct g_page));
-    memmove(buf,page,sizeof(struct g_page));
-    int fd=open_file("aa");
-    write_page(fd,0,buf);
-    close_file(fd);
-    printf("ginkgo\n");
+
+    printf("int %d\n",sizeof(int));
+    printf("long %d\n",sizeof(long));
+    printf("float %d\n",sizeof(float));
+    printf("double %d\n",sizeof(double));
+
 }
