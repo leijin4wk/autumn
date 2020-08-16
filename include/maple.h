@@ -10,7 +10,7 @@
 struct field_items_define		/*CREATE语句后的字段和类型链表节点结构*/
 {
     char *field;		/*字段名称*/
-    int type;			/*INTEGER =0 TEXT=1  REAL=2  DATE=3*/
+    char type;			/*INTEGER =0 TEXT=1  REAL=2  DATE=3*/
     struct  field_items_define *next;
 };
 

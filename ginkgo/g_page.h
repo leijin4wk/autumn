@@ -9,12 +9,13 @@
  * 定义页面结构
  */
 struct g_page_head{
-    char type; //定义页面类型  0：叶子节点 1：关键字节点  （1字节）
+    char type; //定义页面类型  0：叶子节点 1：关键字节点 2:list节点，3：溢出节点 （1字节）
     short free_black_offset; //空闲cell(被删除的)链表头 （2字节）
     short cells;//页面记录数  （2字节）
     short first_content;   // （2字节）(这个值依赖页面的大小)
     char fragment; //纪录由于cell被重新使用而产生的碎片，用于判断页面是否要被整理 （1个字节）
-    int right_page_number; //如果是叶子节点，这个值不存在，如果不是叶子节点，则保存最右边孩子的页数（4个字节）
+                             //如果是叶子节点，这个值不存在，如果是b树，则保存最右边孩子的页数
+    int right_page_number;   // （4个字节);如果是list节点，则保存下个list 页数；如果是溢出节点，则保存下个list 页数
 };
 
 struct g_cell_item{

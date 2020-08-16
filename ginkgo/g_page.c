@@ -17,10 +17,10 @@ int get_page_head(const char * buffer,struct g_page_head * out_head){
     out_head->cells=*((short*)(buffer+3));;
     out_head->first_content=*((short*)(buffer+5));;
     out_head->fragment=*(buffer+7);
-    if (out_head->type==1){
-        out_head->right_page_number=*((int*)(buffer+8));
-    }else{
+    if (out_head->type==0){
         out_head->right_page_number=0;
+    }else{
+        out_head->right_page_number=*((int*)(buffer+8));
     }
     return 1;
 }
@@ -54,11 +54,11 @@ int new_page(char type,char ** out_buffer,struct g_page_head * out_head,int page
     memcpy(*out_buffer+5,&out_head->first_content,2);
     out_head->fragment=0;
     memcpy(*out_buffer+7,&out_head->fragment,1);
-    if (type==1){
+    if (type==0){
+        out_head->right_page_number=0;
+    }else{
         out_head->right_page_number=page_number;
         memcpy(*out_buffer+8,&out_head->right_page_number,4);
-    }else{
-        out_head->right_page_number=0;
     }
     return 1;
 }
