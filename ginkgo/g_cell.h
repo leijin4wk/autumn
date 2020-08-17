@@ -7,6 +7,47 @@
 #include "g_page.h"
 
 
+//          format:
+//    char type; //INTEGER =0 TEXT=1  REAL=2  DATE=3*/
+//    short table_name_size;
+//    char* column_name;
+
+
+struct g_table_column{
+    char type; //INTEGER =0 TEXT=1  REAL=2  DATE=3*/
+    char* column_name;
+    struct g_table_column *next;
+};
+
+//          format:
+//    char type;
+//    short name_size;
+//    char *name;
+//    short table_name_size;
+//    char *table_name;
+//    char column_num;
+//    short table_column_size;
+//    char *table_column;
+//    int root_page;
+//    short sql_size;
+//    char *sql;
+//    char *key_name;
+//    short key_name_size;
+//
+
+
+struct g_table_record{
+    char type;
+    char *name;
+    char *table_name;
+    struct g_table_column *list
+    int root_page;
+    char *key_name;
+    char *sql;
+    struct g_table_record *next;
+};
+
+//##############################
 struct g_cell_key{
     short key_size; //关键字大小
     char key_type; //关键字类型

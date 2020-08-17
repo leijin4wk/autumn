@@ -5,11 +5,17 @@
 #ifndef AUTUMN_G_PAGE_H
 #define AUTUMN_G_PAGE_H
 #include "ginkgo.h"
+enum PAGE_TYPE{
+    TABLE_LEAF = 0,//table叶子节点
+    TABLE_INTERIOR = 1,//table关键字节点
+    INDEX_LEAF = 2,//index 叶子节点
+    INDEX_INTERIOR = 3//index 关键字节点
+};
 /**
  * 定义页面结构
  */
 struct g_page_head{
-    char type; //定义页面类型  0：叶子节点 1：关键字节点 2:list节点，3：溢出节点 （1字节）
+    char type; //定义页面类型  0：table叶子节点 1：table关键字节点 2:index 叶子节点，3：index 关键字节点 （1字节）
     short free_black_offset; //空闲cell(被删除的)链表头 （2字节）
     short cells;//页面记录数  （2字节）
     short first_content;   // （2字节）(这个值依赖页面的大小)
