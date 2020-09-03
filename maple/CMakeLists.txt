@@ -1,4 +1,4 @@
-## 枫树是秋天的主题之一
+## 枫树
 message(STATUS "build maple start!")
 #条件编译
 option (DEBUG  "DEBUG" ON)

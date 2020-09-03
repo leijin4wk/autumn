@@ -1,4 +1,4 @@
-## 银杏是秋天的主题之一
+## 银杏
 message(STATUS "build ginkgo start!")
 
 # 查找当前目录下的所有源文件
