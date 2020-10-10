@@ -2,9 +2,9 @@
 // Created by Administrator on 2020/8/12.
 //
 
-#ifndef AUTUMN_G_CELL_H
-#define AUTUMN_G_CELL_H
-#include "g_page.h"
+#ifndef AUTUMN_CELL_H
+#define AUTUMN_CELL_H
+#include "page.h"
 
 
 //          format:
@@ -40,7 +40,7 @@ struct g_table_record{
     char type;
     char *name;
     char *table_name;
-    struct g_table_column *list
+    struct g_table_column *list;
     int root_page;
     char *key_name;
     char *sql;

@@ -2,9 +2,11 @@
 // Created by Administrator on 2020/8/12.
 //
 
-#ifndef AUTUMN_G_PAGE_H
-#define AUTUMN_G_PAGE_H
-#include "ginkgo.h"
+#ifndef AUTUMN_PAGE_H
+#define AUTUMN_PAGE_H
+
+#define PAGE_SIZE 1024
+
 enum PAGE_TYPE{
     TABLE_LEAF = 0,//table叶子节点
     TABLE_INTERIOR = 1,//table关键字节点

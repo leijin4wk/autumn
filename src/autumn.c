@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <getopt.h>
 #include <string.h>
-#include "maple.h"
-#include "ginkgo.h"
+#include "page.h"
 
 #define AUTUMN_VERSION 1.0
+
+#define PAGE_SIZE 1024
 
 void autumn_print_version ();
 void autumn_print_help ();
@@ -74,6 +75,15 @@ struct option long_options[] = {
 //    puts("-r, --run\n\t run ");
 //    puts("-h, --help:\n\t get this message");
 //}
+
+void g_hello(){
+    char *out_buffer=calloc(sizeof(char),PAGE_SIZE);
+    struct g_page_head b;
+    new_page(1, &out_buffer,&b,55);
+    struct g_page_head c;
+    int d=get_page_head(out_buffer,&c);
+    printf("%d\n",d);
+}
 int main(int argc, char **argv) {
     g_hello();
 }

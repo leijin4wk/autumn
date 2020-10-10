@@ -2,8 +2,8 @@
 // Created by Administrator on 2020/8/16.
 //
 
-#ifndef AUTUMN_G_UTIL_H
-#define AUTUMN_G_UTIL_H
+#ifndef AUTUMN_UTIL_H
+#define AUTUMN_UTIL_H
 
 /**
  * 截取字符串

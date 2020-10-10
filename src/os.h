@@ -2,8 +2,8 @@
 // Created by leijin on 2020/8/6.
 //
 
-#ifndef AUTUMN_G_OS_H
-#define AUTUMN_G_OS_H
+#ifndef AUTUMN_OS_H
+#define AUTUMN_OS_H
 
 #include <sys/types.h>
 
@@ -26,4 +26,4 @@ void read_data(int fd,off_t offset, size_t buff_size,void *buf);
 
 void write_data(int fd,off_t offset, size_t buff_size,void *buf);
 
-#endif //AUTUMN_G_OS_H
+#endif //AUTUMN_OS_H
