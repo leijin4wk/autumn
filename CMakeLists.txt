@@ -13,7 +13,7 @@ add_subdirectory(maple)
 include_directories(include)
 
 # 指定生成目标
-add_executable(autumn src/autumn.c src/page.c)
+add_executable(autumn src/autumn.c src/page.c src/btree.h)
 
 ## 添加链接库
 target_link_libraries(autumn maple)
